@@ -42,7 +42,7 @@ for code in sorted(state_names.keys()):
     dropdown_states.append(state_names[code] + " (" + code + ")")
 
 # Welcome message and get user name
-name = input("Welcome to the Movie Booker! What's your name? ")
+name = input("Welcome to the Movie Setter! What's your name? ")
 print(f"Hello, {name}! Let's find you a movie to watch.")
 # Display movie options
 print("\nAvailable movies:")
@@ -93,6 +93,10 @@ movie["seats"] -= tickets
 # Coupon
 coupon_code = input("Enter coupon code (or press Enter to skip): ").upper()
 discount_rate = coupons.get(coupon_code, 0)
+
+# Thank you message
+print(f"\nThank you for using Movie Setter, {name}. Enjoy the movie!")
+
 
 # State tax
 state = input("Enter your state abbreviation (NY, NJ, CA, FL): ").upper()
