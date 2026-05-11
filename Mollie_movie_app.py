@@ -66,31 +66,52 @@ print(f"Hello, {name}! Let's find you a movie to watch.")
 print("\nAvailable movies:")
 for movie in movies:
 print(f"- {movie['title']} ({movie['genre']}) - ${movie['price']}")
-# Get user's choice and validate
-while True:
-chosen_movie = input("\nEnter the title of the movie you want to watch: ")
-movie_found = False
-for movie in movies:
-if movie["title"].lower() == chosen_movie.lower():
-movie_found = True
-chosen_movie = movie # Store the dictionary object
-break
-if movie_found:
-break
-else:
-print(f"Sorry, '{chosen_movie}' is not available. Please try again.")
-# Display movie details and get number of tickets
-print(f"\nYou chose '{chosen_movie['title']}' ({chosen_movie['genre']}) - $
-{chosen_movie['price']}")
-num_tickets = int(input("How many tickets would you like to purchase? "))
-# Check ticket availability and calculate total price
-if num_tickets <= chosen_movie["available_tickets"]:
-chosen_movie["available_tickets"] -= num_tickets # Update available tickets
-total_price = num_tickets * chosen_movie["price"]
-print(f"\nCongratulations! You purchased {num_tickets} tickets for
-'{chosen_movie['title']}' at a total of ${total_price}.")
-else:
-print(f"Sorry, only {chosen_movie['available_tickets']} tickets are available
-for '{chosen_movie['title']}'.")
-# Thank you message
-print(f"\nThank you for using Movie Booker, {name}. Enjoy the movie!")
+tax_rates = {
+    "NY": 0.08625,
+    "NJ": 0.06625,
+    "CA": 0.0725,
+    "FL": 0.06
+}
+
+TICKET_PRICE = 12.00
+
+print("Welcome to the Movie Ticket App!")
+print("----------------------------------")
+
+# Display movie menu
+print("\nAvailable Movies:")
+for key, info in movies.items():
+    print(f"{key}) {info['title']} - Seats Left: {info['seats']}")
+
+# Movie selection
+choice = input("\nSelect a movie (A-F): ").upper()
+
+if choice not in movies:
+    print("Invalid selection.")
+    exit()
+
+movie = movies[choice]
+print(f"\nYou selected: {movie['title']}")
+print(f"Seats available: {movie['seats']}")
+
+# Ticket quantity
+tickets = int(input("How many tickets would you like: "))
+
+if tickets <= 0:
+    print("Invalid number of tickets.")
+    exit()
+
+if tickets > movie["seats"]:
+    print(f"Sorry, only {movie['seats']} seats are left.")
+    exit()
+
+# Update inventory
+movie["seats"] -= tickets
+
+# Coupon
+coupon_code = input("Enter coupon code (or press Enter to skip): ").upper()
+discount_rate = coupons.get(coupon_code, 0)
+
+# State tax
+state = input("Enter your state abbreviation (NY, NJ, CA, FL): ").upper()
+tax_rate = tax_rates.get(state, 0)
