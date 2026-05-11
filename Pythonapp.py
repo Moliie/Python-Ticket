@@ -1,8 +1,9 @@
-# movie ticket booking app
-# typing as fast as I can
-# we to making the differences
-# The last time siting and watching a movie was When I was a kid and these the movies I remember
-
+#-----------------------------------------------------------------
+# Author: Mollie Rejano
+# Python Basics
+# Date: May 8, 2026
+# Assignment : Movie Ticket App Upgrade
+#-----------------------------------------------------------------
 import tkinter as tk
 from tkinter import ttk
 import random
