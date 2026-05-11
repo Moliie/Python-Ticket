@@ -1,7 +1,7 @@
 # movie ticket booking app
-# by me lol
-# started this for my CS class project, took forever but it works!!
-# TODO: maybe add more movies later
+# typing as fast as I can
+# we to making the differences
+# The last time siting and watching a movie was When I was a kid and these the movies I remember
 
 import tkinter as tk
 from tkinter import ttk
@@ -18,7 +18,7 @@ movies_list = [
     {"key": "F", "title": "Your Mine & Ours", "genre": "Romance", "price": 18, "available_tickets": 25},
   
 
-# coupon codes - told my friend about these lmao
+# coupon codes - can't live without in the econamy
 # 5%, 10%, 15% off
 valid_coupons = {
     "SAVE5": 5,
@@ -71,7 +71,7 @@ chosen_state = ""
 coupon_applied = None
 coupon_discount_pct = 0
 
-# the main window
+# the main window 
 window = tk.Tk()
 window.title("CineBook - Buy Movie Tickets")
 window.geometry("680x660")
@@ -244,7 +244,7 @@ def make_movie_row(parent, movie):
     tk.Label(info, text=seat_text, bg=seat_bg, fg=seat_fg,
              font=("Arial", 9), padx=5, pady=2).pack(anchor="w", pady=(3, 0))
 
-    # click to select (only if not sold out)
+    # click to select (only if not sold out) sad when it happens
     if not disabled:
         row.bind("<Button-1>", lambda e, m=movie: select_movie(m))
         info.bind("<Button-1>", lambda e, m=movie: select_movie(m))
@@ -477,7 +477,7 @@ def show_page3():
 
     state_dropdown.bind("<<ComboboxSelected>>", on_state_pick)
 
-    # trigger it if already selected
+    # notify when it if already selected
     if chosen_state != "":
         on_state_pick(None)
 
